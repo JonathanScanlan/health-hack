@@ -3,9 +3,12 @@ gc()
 
 library('shiny')
 library('ggmap')
-#TheRecords<-read.csv('http://52.89.201.245:3838/data/DataForAppV2.csv')
-TheRecords<-read.csv('/data/DataForAppV2.csv')
+library('downloader')
+
+download('https://github.com/timothydsmith/health-hack/raw/master/DataForAppV2.csv', "./DataForAppV2.csv")
+TheRecords<-read.csv('DataForAppV2.csv')
 ForBeta<-c(sample(which(paste0(TheRecords[,'facility_country'])=='United States'),50),sample(which(paste0(TheRecords[,'facility_country'])=='Germany'),50))
+
 #TheRecords<-TheRecords[ForBeta,]
 
 #This subsets the data to the most recent records
